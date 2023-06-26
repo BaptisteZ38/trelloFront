@@ -1,0 +1,40 @@
+<div class="tabs" cdkDropListGroup>
+    <div class="example-container">
+      <h2 class="title">A faire</h2>
+      <div
+        cdkDropList
+        [cdkDropListData]="toDo"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of toDo" cdkDrag>{{item}}</div>
+        <form [formGroup]="applyForm" (submit)="submitForm()" action="" class="formGlobal">
+          <input class="inputForm" type="text" id="tache" formControlName="tache" placeholder="Entrer une tâche">
+          <input class="buttonForm" type="submit" value="Envoyer">
+        </form>
+      </div>
+      
+    </div>
+  
+    <div class="example-container">
+      <h2 class="title">En cours</h2>
+      <div
+        cdkDropList
+        [cdkDropListData]="inProgress"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)">
+        <div class="example-box" *ngFor="let item of inProgress" cdkDrag>{{item}}</div>
+      </div>
+    </div>
+
+    <div class="example-container">
+        <h2 class="title">Fait</h2>
+        <div
+          cdkDropList
+          [cdkDropListData]="done"
+          class="example-list"
+          (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+        </div>
+      </div>
+  </div>
+  
