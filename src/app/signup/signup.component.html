@@ -1,0 +1,138 @@
+<div class="bg-grey-lighter min-h-screen flex flex-col">
+  <div
+    class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2"
+  >
+    <div class="bg-white px-6 py-8 rounded shadow-md text-black w-full">
+      <h1 class="mb-8 text-3xl text-center">Inscription</h1>
+      <form
+        [formGroup]="applyForm"
+        (ngSubmit)="onSubmit()"
+        action=""
+        class="formGlobal"
+      >
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="prenom"
+            formControlName="prenom"
+            placeholder="Prénom"
+            [ngClass]="{ 'is-invalid': submitted && f['prenom'].errors }"
+          />
+          <div *ngIf="submitted && f['prenom'].errors" class="invalid-feedback">
+            <div *ngIf="f['prenom'].errors['required']">Prénom requis</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="nom"
+            formControlName="nom"
+            placeholder="Nom"
+            [ngClass]="{ 'is-invalid': submitted && f['nom'].errors }"
+          />
+          <div *ngIf="submitted && f['nom'].errors" class="invalid-feedback">
+            <div *ngIf="f['nom'].errors['required']">Nom requis</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="email"
+            formControlName="email"
+            placeholder="Email"
+            [ngClass]="{ 'is-invalid': submitted && f['email'].errors }"
+          />
+          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+            <div *ngIf="f['email'].errors['required']">Email requis</div>
+            <div *ngIf="f['email'].errors['email']">Email invalide</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="pseudo"
+            formControlName="pseudo"
+            placeholder="Pseudo"
+            [ngClass]="{ 'is-invalid': submitted && f['pseudo'].errors }"
+          />
+          <div *ngIf="submitted && f['pseudo'].errors" class="invalid-feedback">
+            <div *ngIf="f['pseudo'].errors['required']">
+              Pseudo requis
+            </div>
+            <div *ngIf="f['pseudo'].errors['minlength']">
+              Pseudo doit avoir plus de 6 caractères
+            </div>
+            <div *ngIf="f['pseudo'].errors['maxlength']">
+                Pseudo doit avoir moins de 20 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            id="password"
+            formControlName="password"
+            placeholder="Mot de passe"
+            [ngClass]="{ 'is-invalid': submitted && f['password'].errors }"
+          />
+          <div
+            *ngIf="submitted && f['password'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['password'].errors['required']">
+              Mot de passe requis
+            </div>
+            <div *ngIf="f['password'].errors['minlength']">
+              Mot de passe doit avoir plus de 6 caractères
+            </div>
+            <div *ngIf="f['password'].errors['maxlength']">
+            Mot de passe doit avoir moins de 40 caractères
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <input
+            type="password"
+            class="form-control"
+            id="confirmPassword"
+            formControlName="confirmPassword"
+            placeholder="Confirmation mot de passe"
+            [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].errors }"
+          />
+          <div
+            *ngIf="submitted && f['confirmPassword'].errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f['confirmPassword'].errors['required']">
+              Confirmation du mot de passe requis
+            </div>
+            <div *ngIf="f['confirmPassword'].errors['matching']">
+              Confirmation du mot de passe ne correspond pas 
+            </div>
+          </div>
+        </div>
+
+        <input
+          type="submit"
+          class="buttonSignUp w-full text-center py-3 rounded text-white focus:outline-none my-1"
+        />
+      </form>
+    </div>
+    <div class="text-grey-dark mt-6">
+      Déjà un compte ?
+      <a class="no-underline border-b border-blue text-blue" href="../login/">
+        Se connecter.
+      </a>
+    </div>
+  </div>
+</div>

@@ -7,7 +7,7 @@ import { User } from '../model/user';
     providedIn: 'root'
 })
 export class UserService{
-    private baseUrl = "http://localhost:8080/user"
+    private baseUrl = "https://localhost:8080/user"
 
     constructor(private httpClient: HttpClient){}
 
@@ -16,6 +16,10 @@ export class UserService{
     }
 
     createUser(user: User): Observable<User> {
-        return this.httpClient.post<User>("http://localhost:8080/user", user);
+        return this.httpClient.post<User>("https://localhost:8080/auth/register", user);
+    }
+
+    onLogin(obj:any) : Observable<any>{
+        return this.httpClient.post('https://localhost:8080/auth/login', obj)
     }
 }

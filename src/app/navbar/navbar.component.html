@@ -1,0 +1,21 @@
+
+<nav id="header" class="w-full bg-white shadow-lg border-b border-blue-400 ">
+  <div class="w-full flex items-center justify-between mt-0 px-6 py-2">
+     
+     <div class="hidden md:flex md:items-center md:w-auto w-full order-3 md:order-1" id="menu">
+        <nav>
+           <ul class="md:flex items-center justify-between text-base text-blue-600 pt-4 md:pt-0">
+              <li><a class="inline-block no-underline font-medium text-lg py-2 px-4 lg:-ml-2" routerLink="home" routerLinkActive="active">Accueil</a></li>
+              <li><a class="inline-block no-underline font-medium text-lg py-2 px-4 lg:-ml-2" routerLink="profil" routerLinkActive="active">Profil</a></li>
+              <li><a class="inline-block no-underline font-medium text-lg py-2 px-4 lg:-ml-2" href="#">About</a></li>
+           </ul>
+        </nav>
+     </div>
+     
+     <div class="order-2 md:order-3 flex flex-wrap items-center justify-end mr-0 md:mr-4" id="nav-content">
+        <div class="auth flex items-center w-full md:w-full">
+           <button class="bg-blue-600 text-gray-200  p-2 rounded  hover:bg-blue-500 hover:text-gray-100" (click)="deconnexion()">Déconnexion</button>
+        </div>
+     </div>
+  </div>
+</nav>

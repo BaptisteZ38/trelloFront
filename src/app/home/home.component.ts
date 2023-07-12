@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor } from '@angular/common';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, isFormRecord } from '@angular/forms';
 import {
   CdkDragDrop,
   CdkDrag,
@@ -12,6 +12,7 @@ import {
 import { TaskService } from '../service/task.service';
 import { Task } from '../model/task';
 import { ToastrService } from 'ngx-toastr';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -24,20 +25,21 @@ export class HomeComponent implements OnInit {
   public toDo: string[] = [];
   public inProgress: string[] = [];
   public done: string[] = [];
+  public idUser = this.cookieService.get('idUser');
 
-  constructor(private taskService: TaskService, private toastr: ToastrService) {}
+  constructor(private taskService: TaskService, private toastr: ToastrService, private cookieService: CookieService) {}
 
   ngOnInit(): void {
-    this.taskService.getAllTask().subscribe(
+    this.taskService.getTaskByIdUser(this.idUser).subscribe(
       (data) => {
         this.toDo = data
-          .filter((element) => element.idState === '647f2250d3d5c25025bce70a')
+          .filter((element) => element.idState === '64994a92227a1f3ddfa68740')
           .map((element) => element.task ?? '');
         this.inProgress = data
-          .filter((element) => element.idState === '647f2250d3d5c25025bce70b')
+          .filter((element) => element.idState === '64994a92227a1f3ddfa68741')
           .map((element) => element.task ?? '');
         this.done = data
-          .filter((element) => element.idState === '647f2250d3d5c25025bce70c')
+          .filter((element) => element.idState === '64994a92227a1f3ddfa68742')
           .map((element) => element.task ?? '');
       },
     );
@@ -60,16 +62,15 @@ export class HomeComponent implements OnInit {
 
       const itemMoved = event.container.data[event.currentIndex];
       const containerIdToStateIdMap: { [key: string]: string } = {
-        'cdk-drop-list-0': '647f2250d3d5c25025bce70a',
-        'cdk-drop-list-1': '647f2250d3d5c25025bce70b',
-        'cdk-drop-list-2': '647f2250d3d5c25025bce70c',
+        'cdk-drop-list-0': '64994a92227a1f3ddfa68740',
+        'cdk-drop-list-1': '64994a92227a1f3ddfa68741',
+        'cdk-drop-list-2': '64994a92227a1f3ddfa68742',
       };
 
       this.taskService.getTaskByName(itemMoved).subscribe(
         (data) => {
         const containerId = event.container.id;
         const idState = containerIdToStateIdMap[containerId];
-
         if (idState) {
           const task: Task = {
             id: data.id,
@@ -91,8 +92,8 @@ export class HomeComponent implements OnInit {
     if (this.applyForm.value.tache !== '') {
       const task: Task = {
         task: this.applyForm.value.tache,
-        idUser: '647f2250d3d5c25025bce709',
-        idState: '647f2250d3d5c25025bce70a',
+        idUser: this.idUser,
+        idState: '64994a92227a1f3ddfa68740',
       };
 
       this.taskService.createTask(task).subscribe(
@@ -106,6 +107,6 @@ export class HomeComponent implements OnInit {
   }
 
   showToastr(test:String){
-    this.toastr.success('Vous avez bien créer' + test, 'Validation');
+    this.toastr.success('Vous avez bien créé ' + test.toLowerCase(), 'Validation');
   }
 }

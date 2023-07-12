@@ -4,17 +4,32 @@ import { HomeComponent } from './home/home.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ProfilComponent } from './profil/profil.component';
 import { CommonModule } from '@angular/common';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
+import { AuthGuard } from './auth.guard';
 
 const routes: Routes = [
   {
     path: '',
+    component: SignupComponent,
+    title: 'Sign up'
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+    title: 'Login'
+  },
+  {
+    path: 'home',
     component: HomeComponent,
-    title: 'Accueil'
+    title: 'Accueil',
+    canActivate: [AuthGuard]
   },
   {
     path:'profil',
     component: ProfilComponent,
-    title:'Profil'
+    title:'Profil',
+    canActivate: [AuthGuard]
   }
 ];
 

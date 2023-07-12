@@ -7,7 +7,7 @@ import { State } from '../model/state';
     providedIn: 'root'
 })
 export class StateService{
-    private baseUrl = "http://localhost:8080/state"
+    private baseUrl = "https://localhost:8080/state"
 
     constructor(private httpClient: HttpClient){}
 
@@ -16,6 +16,6 @@ export class StateService{
     }
 
     createState(state: State): Observable<State> {
-        return this.httpClient.post<State>("http://localhost:8080/state", state);
+        return this.httpClient.post<State>("https://localhost:8080/state", state);
     }
 }

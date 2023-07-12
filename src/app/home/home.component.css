@@ -1,5 +1,5 @@
 .tabs{
-    padding: 3%;
+    padding: 6%;
     text-align: center;
 }
 
@@ -64,19 +64,4 @@
   
 .example-list.cdk-drop-list-dragging .example-box:not(.cdk-drag-placeholder) {
     transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
-}
-
-.inputForm{
-    width: 70%;
-    margin-bottom: 25px;
-    padding: 10px;
-    border-radius: 5px;
-}
-
-.buttonForm{
-    margin-left: 10px;
-    background-color: var(--primary-color);
-    padding: 10px;
-    border-radius: 5px;
-    color: var(--white);
 }

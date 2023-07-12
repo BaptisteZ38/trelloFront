@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~bootstrap/dist/css/bootstrap.css";
 
 *{
     margin: 0;
@@ -17,4 +18,19 @@ body{
     --accent-color: #e8e7fa;
     --shadow-color: #e8e8e8;
     --white: #FFFFFF;
+}
+
+.inputForm{
+    width: 70%;
+    margin-bottom: 25px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.buttonForm{
+    margin-left: 10px;
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-radius: 5px;
+    color: var(--white);
 }
