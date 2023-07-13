@@ -5,4 +5,5 @@ export class User{
     email: string | undefined;
     pseudo: string | undefined;
     password: string | undefined;
+    role: string | undefined;
 }

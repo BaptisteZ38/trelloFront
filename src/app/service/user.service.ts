@@ -15,11 +15,19 @@ export class UserService{
         return this.httpClient.get<User[]>(`${this.baseUrl}`);
     }
 
+    getUserById(idUser: string): Observable<User>{
+        return this.httpClient.get<User>(`${this.baseUrl}/${idUser}`)
+    }
+
     createUser(user: User): Observable<User> {
         return this.httpClient.post<User>("https://localhost:8080/auth/register", user);
     }
 
     onLogin(obj:any) : Observable<any>{
         return this.httpClient.post('https://localhost:8080/auth/login', obj)
+    }
+
+    updateUser(idUser: string, user: User): Observable<any>{
+        return this.httpClient.put(`${this.baseUrl}/${idUser}`, user)
     }
 }

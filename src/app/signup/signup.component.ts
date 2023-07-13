@@ -78,6 +78,7 @@ export class SignupComponent {
         email: this.applyForm.value.email ?? '',
         pseudo: this.applyForm.value.pseudo ?? '',
         password: encryptedPassword ?? '',
+        role: ''
       };
 
       this.userService.createUser(user).subscribe(

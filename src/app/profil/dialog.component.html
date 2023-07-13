@@ -1,0 +1,14 @@
+<div class="container">
+    <h2 class="title">Changement des informations</h2><br>
+    <p class="info">Veuillez changer les champs que vous souhaitez.</p><br>
+    <form [formGroup]="updateUserForm" action="" class="formGlobal">
+        <input class="inputForm" type="text" id="nom" formControlName="nom" placeholder="nom">
+        <input class="inputForm" type="text" id="prenom" formControlName="prenom" placeholder="prenom">
+        <input class="inputForm" type="text" id="pseudo" formControlName="pseudo" placeholder="pseudo">
+        <br>
+        <div class="buttonGroup">
+            <input class="buttonForm" type="submit" (click)="submitForm()" value="Confirmer">
+            <button class="buttonClose" (click)="closeDialog()">Fermer</button>
+        </div>
+    </form>
+</div>

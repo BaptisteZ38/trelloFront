@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 40vh;
+    text-align: center;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 25;
+}
+
+.info{
+    font-style: italic;
+}
+
+.formGlobal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputForm {
+    width: 200px;
+    margin-bottom: 10px;
+}
+
+.buttonGroup {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttonForm {
+    width: 120px;
+}
+
+.buttonClose{
+    width: 120px;
+}
+
+
+
+  
